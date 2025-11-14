@@ -23,6 +23,7 @@ services:
   redis:
     image: redis:7
     container_name: communications-redis
+    restart: unless-stopped
 
   api:
     build: .
