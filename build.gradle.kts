@@ -73,6 +73,7 @@ jacoco {
 
 sonarqube {
     properties {
+        property("sonar.projectName", "io.baxter.communications")
         property("sonar.projectKey", "baxterrp_io.baxter.communications")
         property("sonar.organization", "baxterrp")
         property("sonar.host.url", "https://sonarcloud.io")
