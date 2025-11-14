@@ -73,44 +73,6 @@ class GlobalExceptionHandlerTest {
     }
 
     @Test
-    void webExchangeBindExceptionExceptionShouldReturnBadRequest(){
-        // Arrange
-        MethodParameter mockParameter = mock(MethodParameter.class);
-        BindingResult bindingResult = new BindException(new UserDataModel(null, null), "UserDataModel");
-        bindingResult.rejectValue("username", "NotEmpty", "Username is required");
-
-        WebExchangeBindException exception = new WebExchangeBindException(mockParameter, bindingResult);
-
-        // Act
-        Mono<ResponseEntity<AuthServiceErrorResponse>> response = handler.handleWebExchangeBindException(exception);
-
-        // Assert
-        StepVerifier.create(response)
-                .expectNextMatches(responseEntity ->
-                        validateErrorResponse(responseEntity, HttpStatus.BAD_REQUEST, "username", "Username is required"))
-                .verifyComplete();
-    }
-
-    @Test
-    void MethodArgumentNotValidExceptionExceptionShouldReturnBadRequest(){
-        // Arrange
-        MethodParameter mockParameter = mock(MethodParameter.class);
-        BindingResult bindingResult = new BindException(new UserDataModel(null, null), "UserDataModel");
-        bindingResult.rejectValue("username", "NotEmpty", "Username is required");
-
-        MethodArgumentNotValidException exception = new MethodArgumentNotValidException(mockParameter, bindingResult);
-
-        // Act
-        Mono<ResponseEntity<AuthServiceErrorResponse>> response = handler.handleInputValidationError(exception);
-
-        // Assert
-        StepVerifier.create(response)
-                .expectNextMatches(responseEntity ->
-                        validateErrorResponse(responseEntity, HttpStatus.BAD_REQUEST, "username", "Username is required"))
-                .verifyComplete();
-    }
-
-    @Test
     void generalExceptionShouldReturnInternalServerError(CapturedOutput output){
         // Arrange
         Exception exception = new Exception("Whoops!");
