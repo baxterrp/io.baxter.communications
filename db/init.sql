@@ -1,2 +1,8 @@
-
-
+CREATE TABLE IF NOT EXISTS `emails` (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id CHAR(36) NOT NULL DEFAULT (UUID()),
+  emailAddress VARCHAR(100) NOT NULL,
+  message LONGTEXT NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_user_id (user_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

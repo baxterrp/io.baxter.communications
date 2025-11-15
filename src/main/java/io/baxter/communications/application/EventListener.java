@@ -10,6 +10,6 @@ import org.springframework.stereotype.Component;
 public class EventListener {
     @KafkaListener(topics = "AccountRegistered")
     public void onRegistered(AccountRegisteredEvent event) {
-        log.info("Got event: {}", event);
+        log.info("SAVING USER WITH ID : {}", event.getUserId());
     }
 }
