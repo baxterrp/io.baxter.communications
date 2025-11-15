@@ -24,6 +24,10 @@ repositories {
 }
 
 dependencies {
+    // kafka listener
+    implementation("org.springframework.kafka:spring-kafka")
+    implementation("org.springframework.kafka:spring-kafka-test")
+
     // logback
     implementation("ch.qos.logback:logback-core:1.5.19")
     implementation("ch.qos.logback:logback-classic:1.5.19")
