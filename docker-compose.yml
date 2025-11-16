@@ -41,6 +41,8 @@ services:
       JWT_EXPIRATION_MS: ${JWT_EXPIRATION_MS}
       SPRING_REDIS_HOST: communications-redis
       SPRING_REDIS_PORT: 6379
+      ACCOUNT_USER_NAME: ${ACCOUNT_USER_NAME}
+      ACCOUNT_PASSWORD: ${ACCOUNT_PASSWORD}
     ports:
       - ${API_PORTS}
     restart: unless-stopped
