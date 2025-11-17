@@ -22,7 +22,7 @@ public class AccountServiceClientImpl implements AccountServiceClient{
 
     @Override
     public Mono<AccountModel> GetAccount(UUID userId) {
-        String url = String.format("api/accounts/%s", userId);
+        final var url = String.format("api/accounts/%s", userId);
 
         return authServiceClient.getToken()
                 .flatMap(token -> {
